@@ -1,0 +1,278 @@
+// One To One
+
+// Unidirectional
+
+Parent Class(One)
+	PK
+	Non-PK
+	
+	// Default Constructor
+	// Constructor(Non-FK)
+	// getters
+	// setters
+	// toString
+
+Child Class(One)(Has FK)
+	PK
+	Non-PK
+	
+	@OneToOne(cascade.all)
+	@JoinColumn(name="parent_id")
+	FK(Parent parent)->Parent_PK
+	
+	// Default Constructor
+	// Constructor(Non-FK)
+	// getters
+	// setters
+	// toString
+	
+Main Class
+	
+	Parent parent=new Constructor(Non-FK)
+	Child child=new Constructor(Non-FK)
+	
+	// Uni-directional association
+	child.setFK(parent) 
+	
+	// first saves parent then child as per foreign key constraint
+	childRepo.save(child) 
+	
+---------------------------------------------------------------------------------------------------------------------------------	
+	
+// Bidirectional	
+
+Parent Class(One)
+	PK
+	Non-PK
+	
+	@OneToOne(mappedBy="parent", cascade.all) // fetchType Lazy or Eager
+	Child children = new Constructor()
+	
+	// Default Constructor
+	// Constructor(Non-FK)
+	// getters
+	// setters
+	// toString
+
+Child Class(Many)(Has FK)
+	PK
+	Non-PK
+	
+	@OneToOne(cascade.all)
+	@JoinColumn(name="parent_id")
+	FK(Parent parent)->Parent_PK
+	
+	// Default Constructor
+	// Constructor(Non-FK)
+	// getters
+	// setters
+	// toString
+	
+Main Class
+	
+	Parent parent=new Constructor(Non-FK)
+	Child child1=new Constructor(Non-FK)
+	Child child2=new Constructor(Non-FK)
+	
+	// Bi-directional association
+	child.setFK(parent) 
+	
+	// first saves parent then child as per foreign key constraint 
+	parentRepo.save(parent)
+
+---------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------
+// One To Many
+// Unidirectional
+
+Parent Class(One)
+	PK
+	Non-PK
+	
+	// Default Constructor
+	// Constructor(Non-FK)
+	// getters
+	// setters
+	// toString
+
+Child Class(Many)(Has FK)
+	PK
+	Non-PK
+	
+	@ManyToOne(cascade.all)
+	@JoinColumn(name="parent_id")
+	FK(Parent parent)->Parent_PK
+	
+	// Default Constructor
+	// Constructor(Non-FK)
+	// getters
+	// setters
+	// toString
+	
+Main Class
+	
+	Parent parent=new Constructor(Non-FK)
+	Child child1=new Constructor(Non-FK)
+	Child child2=new Constructor(Non-FK)
+	
+	// Uni-directional association
+	child1.setFK(parent) 
+	child2.setFK(parent)
+	
+	// first saves parent then child as per foreign key constraint
+	childRepo.save(child1) 
+	childRepo.save(child2) 
+	
+---------------------------------------------------------------------------------------------------------------------------------	
+	
+// Bidirectional	
+
+Parent Class(One)
+	PK
+	Non-PK
+	
+	@OneToMany(mappedBy="parent", cascade.all) // fetchType Lazy or Eager
+	List<Child> children = new Constructor()
+	
+	// Default Constructor
+	// Constructor(Non-FK)
+	// getters
+	// setters
+	// toString
+
+Child Class(Many)(Has FK)
+	PK
+	Non-PK
+	
+	@ManyToOne(cascade.all)
+	@JoinColumn(name="parent_id")
+	FK(Parent parent)->Parent_PK
+	
+	// Default Constructor
+	// Constructor(Non-FK)
+	// getters
+	// setters
+	// toString
+	
+Main Class
+	
+	Parent parent=new Constructor(Non-FK)
+	Child child1=new Constructor(Non-FK)
+	Child child2=new Constructor(Non-FK)
+	
+	// Bi-directional association
+	child1.setFK(parent) 
+	child2.setFK(parent) 
+	parent.getChildren().add(child1)
+	parent.getChildren().add(child2)
+	
+	// first saves parent then child as per foreign key constraint 
+	childRepo.save(child1) 
+	childRepo.save(child2)
+	parentRepo.save(parent)
+	
+---------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------
+// Many To Many
+// Unidirectional
+
+Parent Class(One)
+	PK
+	Non-PK
+	
+	// Default Constructor
+	// Constructor(Non-FK)
+	// getters
+	// setters
+	// toString
+
+Child Class(Many)(Has FK)
+	PK
+	Non-PK
+	
+	@ManyToMany(cascade.all)
+	@JoinTable(
+            name = "child_parent",
+            joinColumns = @JoinColumn(name = "child_id"
+            ),
+            inverseJoinColumns = @JoinColumn(name = "parent_id"
+            )
+	FK(List<Parent> parent)->Parent_PK
+	
+	// Default Constructor
+	// Constructor(Non-FK)
+	// getters
+	// setters
+	// toString
+	
+Main Class
+	
+	Parent parent1=new Constructor(Non-FK)
+	Parent parent2=new Constructor(Non-FK)
+	Child child=new Constructor(Non-FK)
+	
+	// Uni-directional association
+	child.getParents().add(parent1) 
+	child.getParents().add(parent2) 
+	
+	// first saves parent then child as per foreign key constraint
+	childRepo.save(child) 
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+// Many To Many
+// Bidirectional
+
+Parent Class(One)
+	PK
+	Non-PK
+	
+	@ManyToMany(mappedBy="parent", cascade.all) // fetchType Lazy or Eager
+	@JoinTable(
+            name = "child_parent",
+            joinColumns = @JoinColumn(name = "parent_id"
+            ),
+            inverseJoinColumns = @JoinColumn(name = "child_id"
+            )
+	FK(List<Child> child)->Child_PK
+	
+	// Default Constructor
+	// Constructor(Non-FK)
+	// getters
+	// setters
+	// toString
+
+Child Class(Many)(Has FK)
+	PK
+	Non-PK
+	
+	@ManyToMany(cascade.all)
+	@JoinTable(
+            name = "child_parent",
+            joinColumns = @JoinColumn(name = "child_id"
+            ),
+            inverseJoinColumns = @JoinColumn(name = "parent_id"
+            )
+	FK(List<Parent> parent)->Parent_PK
+	
+	// Default Constructor
+	// Constructor(Non-FK)
+	// getters
+	// setters
+	// toString
+	
+Main Class
+	
+	Parent parent1=new Constructor(Non-FK)
+	Parent parent2=new Constructor(Non-FK)
+	Child child=new Constructor(Non-FK)
+	
+	// Bi-directional association
+	child.getParents().add(parent1) 
+	child.getParents().add(parent2) 
+	parent1.getChildren().add(child)
+	parent2.getChildren().add(child)
+	
+	// first saves parent then child as per foreign key constraint
+	parentRepo.save(parent1)
+	parentRepo.save(parent2) 

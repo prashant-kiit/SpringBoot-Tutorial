@@ -1,0 +1,22 @@
+	11. HATEOAS: https://spring.io/guides/gs/rest-hateoas/, https://spring.io/guides/gs/accessing-data-rest/
+	12. https://www.javaguides.net/2018/06/restful-api-design-best-practices.html
+	13. https://spring.io/guides/gs/consuming-rest/
+	14. https://spring.io/guides/gs/rest-service-cors/
+	15. https://spring.io/guides/gs/consuming-rest-angularjs/
+	16. https://spring.io/guides/gs/serving-web-content/
+	17. https://www.baeldung.com/jsp
+	18. https://spring.io/guides/gs/testing-web/
+	19. https://spring.io/guides/gs/testing-restdocs/
+	20. https://spring.io/guides/gs/securing-web/
+	21. https://spring.io/guides/gs/actuator-service/
+	22. https://spring.io/guides/gs/producing-web-service/
+	23. https://www.baeldung.com/spring-data-jpa-pagination-sorting#create-repository
+	24. https://www.baeldung.com/mapstruct#:~:text=Luckily%2C%20MapStruct%20has%20solid%20support,CDI%2C%20it%20would%20be%20cdi.
+	25. https://www.javaguides.net/2021/02/spring-boot-dto-example-entity-to-dto.html 
+	26. https://www.baeldung.com/hibernate-save-persist-update-merge-saveorupdate 
+	27. https://stackoverflow.com/questions/5207160/what-is-a-csrf-token-what-is-its-importance-and-how-does-it-work
+
+https://spring.io/guides/gs/messaging-jms/
+
+Spring Super Template (Architecture) : https://www.javaguides.net/2021/10/spring-boot-pagination-and-sorting-rest-api.html 	
+SOAP API : https://www.springboottutorial.com/creating-soap-web-service-with-spring-boot-web-services-starter
