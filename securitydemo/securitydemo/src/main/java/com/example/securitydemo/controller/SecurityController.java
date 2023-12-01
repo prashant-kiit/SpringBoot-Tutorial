@@ -7,15 +7,13 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class SecurityController {
-
+	
 	@GetMapping("/login")
 	public String login() {
-		System.out.println("login function!!!");
 		return "login-page";
 	}
 	
     @GetMapping("/")
-    @ResponseBody
     public String dashboard() {
         return "dashboard";
     }
